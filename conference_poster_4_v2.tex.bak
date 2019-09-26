@@ -1,0 +1,224 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% baposter Landscape Poster
+% LaTeX Template
+% Version 1.0 (11/06/13)
+%
+% baposter Class Created by:
+% Brian Amberg (baposter@brian-amberg.de)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[portrait,a0paper,fontscale=0.28]{baposter} % Adjust the font scale/size here
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Directory in which figures are stored
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath} % For typesetting math
+\usepackage{amssymb} % Adds new symbols to be used in math mode
+
+\usepackage{booktabs} % Top and bottom rules for tables
+\usepackage{enumitem} % Used to reduce itemize/enumerate spacing
+\usepackage{palatino} % Use the Palatino font
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+
+\usepackage{multicol} % Required for multiple columns
+\setlength{\columnsep}{1.5em} % Slightly increase the space between columns
+\setlength{\columnseprule}{0mm} % No horizontal rule between columns
+
+\usepackage{tikz} % Required for flow chart
+\usetikzlibrary{shapes,arrows} % Tikz libraries required for the flow chart in the template
+
+\newcommand{\compresslist}{ % Define a command to reduce spacing within itemize/enumerate environments, this is used right after \begin{itemize} or \begin{enumerate}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+}
+
+\definecolor{lightblue}{rgb}{0.145,0.6666,1} % Defines the color used for content box headers
+
+\begin{document}
+
+\begin{poster}
+{
+headerborder=closed, % Adds a border around the header of content boxes
+colspacing=1em, % Column spacing
+bgColorOne=white, % Background color for the gradient on the left side of the poster
+bgColorTwo=white, % Background color for the gradient on the right side of the poster
+borderColor=lightblue, % Border color
+headerColorOne=black, % Background color for the header in the content boxes (left side)
+headerColorTwo=lightblue, % Background color for the header in the content boxes (right side)
+headerFontColor=white, % Text color for the header text in the content boxes
+boxColorOne=white, % Background color of the content boxes
+textborder=roundedleft, % Format of the border around content boxes, can be: none, bars, coils, triangles, rectangle, rounded, roundedsmall, roundedright or faded
+eyecatcher=true, % Set to false for ignoring the left logo in the title and move the title left
+headerheight=0.1\textheight, % Height of the header
+headershape=roundedright, % Specify the rounded corner in the content box headers, can be: rectangle, small-rounded, roundedright, roundedleft or rounded
+headerfont=\Large\bf\textsc, % Large, bold and sans serif font in the headers of content boxes
+%textfont={\setlength{\parindent}{1.5em}}, % Uncomment for paragraph indentation
+linewidth=2pt % Width of the border lines around content boxes
+}
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION 
+%----------------------------------------------------------------------------------------
+%
+{\includegraphics[height=4em]{LOGO_SMAT_C.jpg}} % First university/lab logo on the left
+{\bf{\begin{LARGE}
+{Implementation of Ultrasound Poroelastography imaging technique in creep configuration for premature non-invasive detection of lymphedema}
+\end{LARGE}} \vspace{0.1em}} % Poster title
+{\textsc{\ Belfor Galaz and Rodrigo Acevedo\\
+\ \hspace{8pt}Departamento de F\'isica.  Universidad de Santiago de Chile.} } % Author names and institution
+{\includegraphics[height=8em]{LOGO_USACH.jpg}} % Second university/lab logo on the right
+
+%----------------------------------------------------------------------------------------
+%	MOTIVACION
+%----------------------------------------------------------------------------------------
+
+\headerbox{Motivation}{name=objectives,column=0,row=0}{
+Lymphedema is a set of pathological conditions which induce an excessive accumulation of protein-rich fluid within the intercellular space. Biomechanically, these pathological tissues behave as poroelastic media where the ''permeability'' could be used as a diagnosis tool. 
+ 
+{\includegraphics[height=7em]{Linfedema.jpg}}
+{\includegraphics[height=7em]{Fisiologia_Linfatica.jpg}}
+\vspace{0.3em} % When there are two boxes, some whitespace may need to be added if the one on the right has more content
+}
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\headerbox{Introduction}{name=introduction,column=1,row=0,aligned=objectives}{
+Ultrasound (US) Poroelastography refers to use of Elastography techniques for imaging the temporal behavior of materials that can be modeled as poroelastic media. The material is submitted to external deformation while the ultrasonic images are used to monitor locally the temporal evolution of the strain tensor component along the axis of insonification. Specific models are applied to the strain images to estimate the poroelastic properties.We aim to use this technique in creep configuration as a non-invasive diagnostic tool for premature detection of lymphedema. 
+}
+
+%----------------------------------------------------------------------------------------
+%	MATERIALS AND METHODS
+%----------------------------------------------------------------------------------------
+
+\headerbox{Materials \& Methods}{name=method,column=2,aligned=introduction}{ 
+
+In-vitro US Poroelastography imaging technique in creep configuration using fluid-saturated polyurethane sponges as biomimetic phantoms. The displacements are computed by a multilevel coarse-to-fine 2D block-matching algorithm and the corresponding axial strain images are calculated in a cumulative way. Temporal behavior is characterized by one-dimensional (1D) rheological models by using the Levenberg-Marquardt (LM) optimization algorithm as curve-fitting method.
+
+\begin{center}
+\includegraphics[scale=0.3]{SETUP.jpg}
+\end{center}
+}
+
+%----------------------------------------------------------------------------------------
+%	OPTIMIZATION
+%----------------------------------------------------------------------------------------
+
+\headerbox{Mode fit improvements}{name=optimization,column=2,row=0,below=method }{
+
+The KV-KV continuous model fit can be improved by manipulating more adequately the other LM parameters.
+
+{\includegraphics[height=13em]{Efficiency_KV_KV_continuo.jpg}}
+ }     
+
+%----------------------------------------------------------------------------------------
+%	CONCLUSION
+%----------------------------------------------------------------------------------------
+
+\headerbox{Conclusion}{name=conclusion,column=2,row=0,below=optimization}{
+\begin{itemize}
+\item{The continuous bimodal models show to be more robusts to the LM parameters and more accurate in terms of fitting quality than the single models.}
+\item{The increment in time processing of the KV-KV continuous model can be significantly reduced by selecting adequately the LM parameters.}
+\end{itemize}
+%The continuous bimodal models show to be more robusts to the LM parameters and more accurate in terms of fitting quality than the single models.\\
+%The time processing cost (10 times) of the KV-KV continuous model can be  significantly.
+ }     
+
+%----------------------------------------------------------------------------------------
+%	FUTURE RESEARCH
+%----------------------------------------------------------------------------------------
+
+\headerbox{Future Research}{name=futureresearch,column=2,below=conclusion}{ 
+% This block is as tall as the references block 
+% above=bottom
+\begin{itemize}
+\item{Find the relation between poroelastic properties and rheological parameters.}
+\item{Real-time implementation for in-vivo applications (collaboration from software engineering or computer science area).}
+\item{Feasibility and statistical study using real cases (new Fondecyt grant application with the collaboration of the Instituto Angiol\'ogico Montpellier).}
+\end{itemize}
+}
+%----------------------------------------------------------------------------------------
+%	RESULTS 2
+%----------------------------------------------------------------------------------------
+
+\headerbox{Models and systematic study}{name=results2,column=0,span=2,below=introduction}{
+\begin{multicols}{2}
+In order to find the rheological model most suitable for clinical applications we performed a comparative study using four rheological models in its single and continuous versions. We choose the initial set of model parameters by keeping at the same level the initial relative distance from the data (initial error). The initial damping coefficient ($k$) of the LM algorithm is changed and the efficiency paramater $r^2/$CPU time is defined for fitted data with $r^2>0.9$. The elastic component is not used (offset) and the models parameters are redefined.\\
+
+{\includegraphics[height=11em]{Models.jpg}}
+
+\begin{center}
+\includegraphics[scale=0.15]{Efficiency.jpg}
+\end{center}
+
+%Base on the systematic study we proposed a schema for pixel by pixel curve fitting using the previous neighbor estimates and manipulating efficiently the LM curve fitting algorithm parameters.\\
+%
+%{\includegraphics[height=7em]{rsquare_filt_single_both_sponges.jpg}}
+%{\includegraphics[height=6.5em]{fit_model_low_poredensity.jpg}}\\
+%
+%Application of the KV-KV continuous model to sponge with very low pore-density inclusion ratio (the inclusion is non-visible in the sonogram image)
+
+\end{multicols}}
+
+%----------------------------------------------------------------------------------------
+%	RESULTS 2
+%----------------------------------------------------------------------------------------
+
+\headerbox{Pixel-by-Pixel Curve Fitting Method }{name=results,column=0,span=2,row=0,aligned=results2,below=results2}{
+\begin{multicols}{2}
+Base on the systematic study we proposed a schema for pixel by pixel curve fitting using the previous neighbor estimates and manipulating efficiently the LM curve fitting algorithm parameters.\\
+
+{\includegraphics[height=7em]{rsquare_filt_single_both_sponges.jpg}}
+{\includegraphics[height=6em]{fit_model_low_poredensity.jpg}}\\
+
+Application of the KV-KV continuous model to sponge with very low pore-density inclusion ratio (the inclusion is non-visible in the sonogram image)
+
+\end{multicols}
+}
+
+%----------------------------------------------------------------------------------------
+%	REFERENCES
+%----------------------------------------------------------------------------------------
+
+\headerbox{References}{name=references,column=0,below=results, above=bottom}{
+
+\renewcommand{\section}[2]{\vskip 0.05em} % Get rid of the default "References" section title
+\nocite{*} % Insert publications even if they are not cited in the poster
+\small{ % Reduce the font size in this block
+\bibliographystyle{unsrt}
+\bibliography{sample} % Use sample.bib as the bibliography file
+}}
+
+
+%----------------------------------------------------------------------------------------
+%	CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\headerbox{acknowledgements}{name=contact,column=1,below=results,above=bottom}{ 
+% This block is as tall as the references block
+This work is supported by the Fondecyt Initiation project No. 11110289, Chile and PBCT project PSD-54, Chile.\\
+\\
+For more information please contact to:
+\begin{description}\compresslist
+\item[Email:] belfor.galaz@usach.cl
+\item[Phone] +56 (2) 2718 1236
+\end{description}
+}
+
+
+%----------------------------------------------------------------------------------------
+\end{poster}
+\end{document}
